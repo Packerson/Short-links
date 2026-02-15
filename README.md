@@ -13,17 +13,15 @@ Request:
 `{"original_url": "https://www.django-rest-framework.org/VeryLongUrl"}`
 
 Response:
-`{"short_url": "http://localhost:8000/shrt/%5C%60"}`
+`{"short_url": "http://localhost:8000/api/short/to_read/Ab12Cd"}`
 
 ### 2) Resolve URL
-- **Method:** `POST`
-- **Path:** `api/v1/short/to_read`
-- **Description:** Receives a shortened URL in the request body, looks it up in the database, and returns the original URL.
+- **Method:** `GET`
+- **Path:** `api/short/to_read/<code>/`
+- **Description:** Reads the short code from the URL path, looks it up in the database, and returns the original URL as JSON.
 
 **Example**
 
-Request:
-`{"short_url": "http://localhost:8000/shrt/%5C%60"}`
 
 Response:
 `{"original_url": "https://www.django-rest-framework.org/VeryLongUrl"}`
@@ -38,5 +36,14 @@ Response:
 ## Why SQLite?
 - The goal is to keep the project simple. In a production environment, I would use PostgreSQL.
 
-## Why POST in the `to_read` endpoint?
-- It reads a shortened URL and returns the original URL in JSON, without automatic redirection.
+## Why GET for reading?
+- The short code is part of the path (`/api/short/to_read/<code>/`), so GET is the simplest API-only contract.
+
+
+## Without logging
+
+
+## TODO:
+- pytest
+- unit tests
+- e2e
