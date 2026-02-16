@@ -54,4 +54,4 @@ Response:
 - The short code is part of the path (`/api/short/to_read/<code>/`), so GET is the simplest API-only contract.
 
 ## Why e2e and test_views?
-- I wasn't sure what if tests with APIClient will be enough, so wrote both of them.
+- I wasn't sure, if tests with APIClient will be enough, so wrote both of them.
