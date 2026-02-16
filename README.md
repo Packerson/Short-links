@@ -1,5 +1,13 @@
 # Short Links
 
+## How to run:
+
+- `python -m venv venv/` # Create viratul env
+- `soruce venv/bin/activate` # activate virtual env
+- `pip install requirements` # install packages
+- `python manage.py runserver`
+
+
 ## Endpoints
 
 ### 1) Shorten URL
