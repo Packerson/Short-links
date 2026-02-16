@@ -55,5 +55,3 @@ Response:
 
 ## Why e2e and test_views?
 - I wasn't sure what if tests with APIClient will be enough, so wrote both of them.
-
-

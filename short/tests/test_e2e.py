@@ -93,7 +93,7 @@ class TestToShortenViewE2E:
         )
         assert response.status_code == 400
         expected_error_array = [
-            'Ensure this field has no more than 2000 characters.',
+            f'Ensure this field has no more than {short_models.ShortLink.original_url.field.max_length} characters.',
             'Enter a valid URL.',
         ]
         res_json = response.json()
