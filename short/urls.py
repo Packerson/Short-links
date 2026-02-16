@@ -1,6 +1,9 @@
 from django.urls import path
-
 from short import views
+
+
+app_name = 'short'
+
 
 urlpatterns = [
     path('to_shorten/', views.ToShortenView.as_view(), name='to_shorten'),

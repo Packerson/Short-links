@@ -3,7 +3,7 @@ from django.urls import path, include
 
 # apps urls
 api_urlpatterns = [
-    path('short/', include('short.urls')),
+    path('short/', include('short.urls', namespace='short')),
 ]
 
 # main urls

@@ -1,35 +1,9 @@
-"""Scenario:
-test _generate_code function
-test _validate_attempts function
-
-
-
-create_short_url function should:
-# - test max attemts
-# - test invalid attempts correctly converted to default attempts
-# - test exceeeded max attempts
-# - test create short link
-# - test invalid original url
-# - test create shortLink
-# - test get existing short link
-
-"""
-
 import pytest
 from unittest.mock import patch
 from django.db import IntegrityError
 
 from short import models as short_models
 from short import utils as short_utils
-
-
-@pytest.fixture
-def short_link(db):
-    """Create a short link"""
-    return short_models.ShortLink.objects.create(
-        original_url="https://www.django-rest-framework.org/VeryLongUrl",
-        code="Ab12Cd"
-    )
 
 
 def test_generate_code():
@@ -96,6 +70,16 @@ class TestCreateShortUrl:
         assert created is False
         assert mock_get_or_create.call_count == 10
 
+    @patch('short.models.ShortLink.objects.get_or_create')
+    def test_unexcpected_error_raised(self, mock_get_or_create):
+        """Test unexcpected error raised"""
+        mock_get_or_create.side_effect = Exception("Test exception")
+        short_link, created = short_utils.create_short_url(
+            original_url="https://www.django-rest-framework.org/VeryLongUrl",
+            attempts=1
+        )
+        assert short_link is None
+        assert created is False
 
     @patch('short.models.ShortLink.objects.get_or_create')
     def test_invalid_original_url(self, mock_get_or_create):

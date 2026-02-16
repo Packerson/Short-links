@@ -67,4 +67,6 @@ def create_short_url(original_url: str, attempts: int = DEFAULT_ATTEMPTS) -> tup
         except IntegrityError:
             max_attempts -= 1
             continue
+        except Exception as e:
+            return None, False
     return None, False
