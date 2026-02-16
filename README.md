@@ -47,9 +47,9 @@ Response:
 
 ## Why this way? Keep it simple
 
-- SQLite The goal is to keep the project simple. In a production environment, I would use PostgreSQL.
+- SQLite The goal is to keep the project simple. In a production environment, I would use PostgreSQL
 - Without logging
-- Without additional validation (original_url, etc..)
-- without additontal error messages
-- GET for the short code is part of the path (`/api/short/to_read/<code>/`), so GET is the simplest API-only contract.
+- Without additional validation (original_url, etc.)
+- Without additontal error messages
+- GET for the short code is part of the path (`/api/short/to_read/<code>/`), so GET is the simplest API-only contract
 - Simple JSON schema for POST and GET
