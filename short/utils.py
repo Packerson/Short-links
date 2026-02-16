@@ -25,7 +25,7 @@ def _generate_code() -> str:
     return "".join(random.choices(ALPHABET, k=DEFAULT_CODE_LENGTH))
 
 
-def _validate_attempts(attempts: int) -> int:
+def _validate_attempts(attempts: int | str | None) -> int:
     """
     Validate the number of attempts
     Args:
@@ -41,7 +41,10 @@ def _validate_attempts(attempts: int) -> int:
     return min(max(attempts, MIN_ATTEMPTS), MAX_ATTEMPTS)
 
 
-def create_short_url(original_url: str, attempts: int = DEFAULT_ATTEMPTS) -> tuple[short_models.ShortLink, bool]:
+def create_short_url(
+    original_url: str,
+    attempts: int = DEFAULT_ATTEMPTS
+) -> tuple[short_models.ShortLink | None, bool]:
     """
     Create a short URL
     Args:

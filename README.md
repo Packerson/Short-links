@@ -3,7 +3,7 @@
 ## How to run:
 
 - `python -m venv venv/` # Create viratul env
-- `soruce venv/bin/activate` # activate virtual env
+- `source venv/bin/activate` # activate virtual env
 - `pip install -r requirements.txt` # install packages
 - `python manage.py runserver`
 
@@ -46,13 +46,14 @@ Response:
 
 ## Why SQLite?
 - The goal is to keep the project simple. In a production environment, I would use PostgreSQL.
+- Without logging
+- Without additional validation (original_url, etc..)
+
 
 ## Why GET for reading?
 - The short code is part of the path (`/api/short/to_read/<code>/`), so GET is the simplest API-only contract.
 
 ## Why e2e and test_views?
-- I wasnt sure what if tests with APIClient will be enough, so 
+- I wasn't sure what if tests with APIClient will be enough, so wrote both of them.
 
 
-- Without logging
-- Without additional validation (original_url, etc..)

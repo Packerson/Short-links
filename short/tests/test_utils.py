@@ -101,7 +101,6 @@ class TestCreateShortUrl:
         assert short_link is not None
         assert created is True
 
-
     def test_create_short_link_success(self):
         """Test create short link success"""
         short_link, created = short_utils.create_short_url(
@@ -113,9 +112,9 @@ class TestCreateShortUrl:
 
     def test_get_existing_short_link(self, short_link):
         """Test get existing short link"""
-        short_link, created = short_utils.create_short_url(
+        short_link_db, created = short_utils.create_short_url(
             original_url=short_link.original_url,
         )
         assert short_link is not None
         assert created is False
-        assert short_link.id == short_link.id
+        assert short_link_db.id == short_link.id
