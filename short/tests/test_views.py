@@ -72,7 +72,7 @@ class TestToShortenView:
         data = {'original_url': 'https://www.django-rest-framework.org/VeryLongUrl'}
         response = self._create_post_request(api_client, data)
 
-        assert response.status_code == 400
+        assert response.status_code == 503
         assert response.data['error'] == 'Failed to create short link, try again'
 
     def test_invalid_data(self, api_client):
