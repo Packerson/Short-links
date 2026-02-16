@@ -12,7 +12,7 @@
 
 ### 1) Shorten URL
 - **Method:** `POST`
-- **Path:** `api/v1/short/to_shorten/`
+- **Path:** `api/short/to_shorten/`
 - **Description:** Receives a long URL in the request body, creates a shortened URL, saves the mapping in the database, and returns the shortened URL as JSON.
 
 **Example**
@@ -48,8 +48,8 @@ Response:
 - The short code is part of the path (`/api/short/to_read/<code>/`), so GET is the simplest API-only contract.
 
 
-## Without logging
-## Without additionsal validation
+- Without logging
+- Without additional validation (original_url, etc..)
 
 
 ## TODO:

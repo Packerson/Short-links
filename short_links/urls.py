@@ -9,5 +9,5 @@ api_urlpatterns = [
 # main urls
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('api/v1/', include((api_urlpatterns, 'api'), namespace='api')),
+    path('api/', include((api_urlpatterns, 'api'), namespace='api')),
 ]
