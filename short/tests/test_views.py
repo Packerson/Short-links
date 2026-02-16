@@ -1,21 +1,7 @@
-"""
-Scenario:
-ToShortenView:
-- test valid data
-- test invalid data
-- test create short link
-- test get existing short link
-
-ToReadView:
-- test valid code
-- test invalid code
-- test no code provided
-- test get existing short link
-"""
-
 import pytest
 from django.conf import settings
 from django.urls import reverse
+from unittest.mock import patch
 
 from short import models as short_models
 
@@ -78,6 +64,16 @@ class TestToShortenView:
         )
         assert response.status_code == 200
         assert response.data['original_url'] == self.link_url
+
+    @patch('short.utils.create_short_url')
+    def test_failed_to_create_short_link(self, mock_create_short_url, api_client):
+        """Test failed to create short link"""
+        mock_create_short_url.return_value = None, False
+        data = {'original_url': 'https://www.django-rest-framework.org/VeryLongUrl'}
+        response = self._create_post_request(api_client, data)
+
+        assert response.status_code == 400
+        assert response.data['error'] == 'Failed to create short link, try again'
 
     def test_invalid_data(self, api_client):
         """Test invalid data"""

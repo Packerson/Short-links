@@ -10,9 +10,15 @@ def api_client():
 
 
 @pytest.fixture
+def short_base_url(settings, live_server):
+    settings.SHORT_BASE_URL = f"{live_server.url}/api/short/to_read"
+    return settings.SHORT_BASE_URL
+
+
+@pytest.fixture
 def short_link(db):
     """Create a short link"""
     return short_models.ShortLink.objects.create(
-        original_url="https://www.django-rest-framework.org/VeryLongUrl",
+        original_url="https://www.django-rest-framework.org/VeryLongUrl/",
         code="Ab12Cd"
     )

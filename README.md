@@ -4,8 +4,11 @@
 
 - `python -m venv venv/` # Create viratul env
 - `soruce venv/bin/activate` # activate virtual env
-- `pip install requirements` # install packages
+- `pip install -r requirements.txt` # install packages
 - `python manage.py runserver`
+
+## Tests
+- `pytest`
 
 
 ## Endpoints
@@ -47,12 +50,9 @@ Response:
 ## Why GET for reading?
 - The short code is part of the path (`/api/short/to_read/<code>/`), so GET is the simplest API-only contract.
 
+## Why e2e and test_views?
+- I wasnt sure what if tests with APIClient will be enough, so 
+
 
 - Without logging
 - Without additional validation (original_url, etc..)
-
-
-## TODO:
-- pytest
-- unit tests
-- e2e

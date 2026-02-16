@@ -5,7 +5,7 @@ from short import utils as short_utils
 
 
 class ShortenInputSerializer(serializers.Serializer):
-    original_url = serializers.URLField(max_length=2000)
+    original_url = serializers.URLField(max_length=2000, required=True)
 
     def create(self, validated_data):
         return short_utils.create_short_url(validated_data["original_url"])
