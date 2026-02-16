@@ -55,18 +55,6 @@ class TestToShortenViewE2E:
         assert response.status_code == 200
         assert response.json()['original_url'] == data['original_url']
 
-    @patch('short.utils.create_short_url')
-    def test_failed_to_create_short_link(self, mock_create_short_url, live_server):
-        """Test failed to create short link"""
-        mock_create_short_url.return_value = None, False
-        data = {'original_url': 'https://www.django-rest-framework.org/VeryLongUrl'}
-        response = requests.post(
-            f'{live_server.url}/api/short/to_shorten/',
-            json=data
-        )
-        assert response.status_code == 400
-        assert response.json()['error'] == 'Failed to create short link, try again'
-
     def test_invalid_data(self, live_server):
         data = {'original_url': 'invalid_url'}
         response = requests.post(

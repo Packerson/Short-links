@@ -74,12 +74,13 @@ class TestCreateShortUrl:
     def test_unexcpected_error_raised(self, mock_get_or_create):
         """Test unexcpected error raised"""
         mock_get_or_create.side_effect = Exception("Test exception")
-        short_link, created = short_utils.create_short_url(
-            original_url="https://www.django-rest-framework.org/VeryLongUrl",
-            attempts=1
-        )
-        assert short_link is None
-        assert created is False
+
+        with pytest.raises(Exception):
+            short_utils.create_short_url(
+                original_url="https://www.django-rest-framework.org/VeryLongUrl",
+                attempts=1
+            )
+        assert mock_get_or_create.call_count == 1
 
     @patch('short.models.ShortLink.objects.get_or_create')
     def test_invalid_original_url(self, mock_get_or_create):

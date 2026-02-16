@@ -70,6 +70,6 @@ def create_short_url(
         except IntegrityError:
             max_attempts -= 1
             continue
-        except Exception as e:
-            return None, False
+
+        # This should be improved to return a more specific error message
     return None, False

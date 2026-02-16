@@ -44,14 +44,12 @@ Response:
 - SQLite
 - pytest
 
-## Why SQLite?
-- The goal is to keep the project simple. In a production environment, I would use PostgreSQL.
+
+## Keep it simple
+
+- SQLite The goal is to keep the project simple. In a production environment, I would use PostgreSQL.
 - Without logging
 - Without additional validation (original_url, etc..)
-
-
-## Why GET for reading?
-- The short code is part of the path (`/api/short/to_read/<code>/`), so GET is the simplest API-only contract.
-
-## Why e2e and test_views?
-- I wasn't sure what if tests with APIClient will be enough, so wrote both of them.
+- without additontal erro messages
+- GET for the short code is part of the path (`/api/short/to_read/<code>/`), so GET is the simplest API-only contract.
+- I added both API-level tests and e2e tests to verify endpoint behavior and full request flow.
