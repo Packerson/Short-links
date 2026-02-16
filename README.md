@@ -4,7 +4,7 @@
 
 ### 1) Shorten URL
 - **Method:** `POST`
-- **Path:** `api/v1/short/to_shorten`
+- **Path:** `api/v1/short/to_shorten/`
 - **Description:** Receives a long URL in the request body, creates a shortened URL, saves the mapping in the database, and returns the shortened URL as JSON.
 
 **Example**
@@ -41,6 +41,7 @@ Response:
 
 
 ## Without logging
+## Without additionsal validation
 
 
 ## TODO:
