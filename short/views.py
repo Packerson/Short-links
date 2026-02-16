@@ -21,6 +21,12 @@ class ToShortenView(APIView):
         # get/create short link
         short_link, created = input_serializer.save()
 
+        if not short_link:
+            return Response(
+                {'error': 'Failed to create short link, try again'},
+                status=status.HTTP_400_BAD_REQUEST,
+            )
+
         # status code based on created
         status_code = status.HTTP_201_CREATED if created else status.HTTP_200_OK
 

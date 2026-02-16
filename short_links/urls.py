@@ -3,11 +3,11 @@ from django.urls import path, include
 
 # apps urls
 api_urlpatterns = [
-    path('short/', include('short.urls')),
+    path('short/', include('short.urls', namespace='short')),
 ]
 
 # main urls
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('api/v1/', include((api_urlpatterns, 'api'), namespace='api')),
+    path('api/', include((api_urlpatterns, 'api'), namespace='api')),
 ]

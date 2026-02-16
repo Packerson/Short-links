@@ -3,16 +3,19 @@
 ## How to run:
 
 - `python -m venv venv/` # Create viratul env
-- `soruce venv/bin/activate` # activate virtual env
-- `pip install requirements` # install packages
+- `source venv/bin/activate` # activate virtual env
+- `pip install -r requirements.txt` # install packages
 - `python manage.py runserver`
+
+## Tests
+- `pytest`
 
 
 ## Endpoints
 
 ### 1) Shorten URL
 - **Method:** `POST`
-- **Path:** `api/v1/short/to_shorten/`
+- **Path:** `api/short/to_shorten/`
 - **Description:** Receives a long URL in the request body, creates a shortened URL, saves the mapping in the database, and returns the shortened URL as JSON.
 
 **Example**
@@ -43,16 +46,12 @@ Response:
 
 ## Why SQLite?
 - The goal is to keep the project simple. In a production environment, I would use PostgreSQL.
+- Without logging
+- Without additional validation (original_url, etc..)
+
 
 ## Why GET for reading?
 - The short code is part of the path (`/api/short/to_read/<code>/`), so GET is the simplest API-only contract.
 
-
-## Without logging
-## Without additionsal validation
-
-
-## TODO:
-- pytest
-- unit tests
-- e2e
+## Why e2e and test_views?
+- I wasn't sure what if tests with APIClient will be enough, so wrote both of them.
