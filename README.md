@@ -50,6 +50,6 @@ Response:
 - SQLite The goal is to keep the project simple. In a production environment, I would use PostgreSQL.
 - Without logging
 - Without additional validation (original_url, etc..)
-- without additontal erro messages
+- without additontal error messages
 - GET for the short code is part of the path (`/api/short/to_read/<code>/`), so GET is the simplest API-only contract.
 - I added both API-level tests and e2e tests to verify endpoint behavior and full request flow.
